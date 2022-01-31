@@ -1,0 +1,26 @@
+{
+  "name": "geek-post-api",
+  "version": "1.0.0",
+  "description": "api of geek post page",
+  "main": "index.js",
+  "author": "facundo cuassolo",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node index.js",
+    "start:dev": "nodemon --exec npm run start"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
