@@ -31,22 +31,45 @@ const Option = styled.li`
     width: 100%;
     background-color:${colors.red};
     align-items: center;
-    color: white;    
+    color: white;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
     
-    ${props => props.one && (!props.active) && 'border-radius: 0px 0px 25px 0px;'}
-    ${props => props.two && (!props.active) && 'border-radius: 0px 0px 0px 25px;'}
+    ${props => props.one && (!props.active) && `animation-name: one;` }
+    ${props => props.two && (!props.active) && `animation-name: two;` }
 
     ${props => props.two && props.active && `
         color: inherit;
         background-color:white;
-        border-radius: 25px 0px 0px 0px;
+        animation-name: twoActive;
     `}
     
     ${props => props.one && props.active && `
         background-color:white;
         color: inherit;
-        border-radius: 0px 25px 0px 0px;
+        animation-name: oneActive;
     `}
+
+    @keyframes one {
+      from  {border-radius:  0px 0px 0px 0px}
+      to    {border-radius:  0px 0px 25px 0px;}
+    }
+
+    @keyframes two {
+      from  {border-radius: 0px  0px 0px 0px;}
+      to    {border-radius: 0px 0px 0px 25px;}
+    }
+
+    @keyframes oneActive {
+      from  {border-radius:  0px 0px 0px 0px}
+      to    {border-radius:  0px 25px 0px 0px}
+    }
+
+    @keyframes twoActive {
+      from {border-radius: 0px  0px 0px 0px;}
+      to   {border-radius: 25px 0px 0px 0px;}
+    }
 `
 
 const Container = styled.ul`
