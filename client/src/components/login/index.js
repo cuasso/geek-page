@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { LoginContainer } from "./style"
-import Selector from "../shares/selector"
-import SubmitForm from '../shares/submitForm'
+import Selector from "../selector"
+import SubmitForm from '../submitForm'
 
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
             { name: "Password", type: "password" }
         ],
         button: 'sing in',
-        onsubmit: (e) => { console.log(e) }
+        submit: (e) => { console.log(e) }
     }
 
     const signUpForm = {
@@ -24,7 +24,7 @@ const Login = () => {
             { name: "Password", type: "password" }
         ],
         button: 'sing up',
-        onsubmit: (e) => { console.log(e) }
+        submit: (e) => { console.log(e) }
     }
 
     const onChangeHandler = (value) => {
@@ -38,7 +38,7 @@ const Login = () => {
                 options={['SING IN', 'SING UP']}
                 defaultValue={defaultOption}
                 onChange={onChangeHandler} />
-                
+
             <SubmitForm
                 inputs={singIn ? singInForm.inputs : signUpForm.inputs}
                 button={singIn ? singInForm.button : signUpForm.button}

@@ -2,8 +2,11 @@ import styled from "styled-components"
 import colors from "../../themes/colors"
 
 export const SubmitButton = props => {
+    const { minWidth } = props
     return (
-        <BaseButton type='submit'>{props.children}</BaseButton>
+        <BaseButton type='submit' style={{ minWidth: minWidth }} {...props}>
+            {props.children}
+        </BaseButton>
     )
 }
 

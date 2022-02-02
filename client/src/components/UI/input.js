@@ -44,7 +44,7 @@ const InputField = styled.input`
       transition: 0.3s;
     }
     
-    &:focus ~ span
+    :focus ~ span
     {
       width: 100%; 
       transition: 0.4s; 
