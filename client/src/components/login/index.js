@@ -2,6 +2,7 @@ import { useState } from "react"
 import { LoginContainer } from "./style"
 import Selector from "../selector"
 import SubmitForm from '../submitForm'
+import { login } from "../../services/usersService"
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
             { name: "Password", type: "password" }
         ],
         button: 'sing in',
-        submit: (e) => { console.log(e) }
+        submit: login 
     }
 
     const signUpForm = {
@@ -42,7 +43,7 @@ const Login = () => {
             <SubmitForm
                 inputs={singIn ? singInForm.inputs : signUpForm.inputs}
                 button={singIn ? singInForm.button : signUpForm.button}
-                onChange={singIn ? singInForm.onChange : signUpForm.onChange}
+                submit={singIn ? singInForm.submit : signUpForm.submit}
             />
         </LoginContainer>
     )

@@ -1,21 +1,21 @@
 import styled from "styled-components"
 
-export const LoadingSpinner = props => {
-    const { left } = props
-    return (
-        <LoadingSpinnerContainer style={{ left: left }}>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </LoadingSpinnerContainer>
-    )
+export const LoadingSpinner = () => {
+  return (
+    <LoadingSpinnerContainer>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </LoadingSpinnerContainer>
+  )
 }
 
 const LoadingSpinnerContainer = styled.div`
     display: inline-block;
     position: relative;
-    width: 10px;
+    width: 56px;
+    left: -8px;
     height: 10px;
     & div {
         position: absolute;        

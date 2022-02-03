@@ -1,20 +1,21 @@
-import { useState } from "react"
+import { useState, forwardRef } from "react"
 import styled from "styled-components"
 import colors from "../../themes/colors"
 
-const Input = props => {
+const Input = forwardRef((props, ref) => {
     const [inputEmpty, setInputEmpty] = useState('')
+    const { name, type, placeholder } = props
 
     const inputHandler = event => setInputEmpty(event.target.value)
 
     return (
         <Container>
-            <InputField type={props.type} onChange={inputHandler} />
-            <Placeholder show={inputEmpty}>{props.placeholder}</Placeholder>
+            <InputField type={type} onChange={inputHandler} name={name} ref={ref} />
+            <Placeholder show={inputEmpty}>{placeholder}</Placeholder>
             <Underline show={inputEmpty} />
         </Container>
     )
-}
+})
 
 export default Input
 
