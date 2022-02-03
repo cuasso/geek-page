@@ -4,7 +4,7 @@ import colors from "../../themes/colors"
 const Selector = props => {
     const { options, defaultValue, onChange } = props
     const selected = defaultValue === 1
-    
+
     return (
         <Container>
             <OptionWrapper active={selected} onClick={() => onChange(1)}>
@@ -23,7 +23,7 @@ const OptionWrapper = styled.div`
     width: 50%;
     height: 100%;    
     background-color:${props => props.active ? colors.red : `white`};
-}`
+`
 
 const Option = styled.li`
     display: inline-flex;
@@ -31,7 +31,7 @@ const Option = styled.li`
     height: 100%;
     width: 100%;    
     align-items: center;    
-    animation-duration: 0.2s;
+    animation-duration: 0.1s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
     
@@ -39,29 +39,29 @@ const Option = styled.li`
         ? `background-color:white;
            color: inherit;
            animation-name: ${props.selector}-active;`
-        
+
         : `background-color:${colors.red};
            color: white;
            animation-name: ${props.selector};`
     }
 
     @keyframes one {
-      from  {border-radius: 0px 25px 0px 0px;}
+      from  {border-radius: 0px 0px 0px 0px;}
       to    {border-radius: 0px 0px 25px 0px;}
     }
 
     @keyframes two {
-      from  {border-radius: 25px 0px 0px 0px;}
+      from  {border-radius: 0px 0px 0px 0px;}
       to    {border-radius: 0px 0px 0px 25px;}
     }
 
     @keyframes one-active {
-      from  {border-radius: 0px 0px 25px 0px;}
+      from  {border-radius: 0px 0px 0px 0px;}
       to    {border-radius: 0px 25px 0px 0px;}
     }
 
     @keyframes two-active {
-      from {border-radius: 0px 0px 0px 25px;}
+      from {border-radius: 0px 0px 0px 0px;}
       to   {border-radius: 25px 0px 0px 0px;}
     }
 `
