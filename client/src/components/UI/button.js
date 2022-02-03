@@ -23,7 +23,7 @@ const BaseButton = styled.button`
     ${props => props.type === 'submit' && `
         background-color: ${colors.red};
         border: none;
-        color: white;        
+        color: ${colors.white};        
         :hover{
             background-color: ${colors.lightRed};
         }`

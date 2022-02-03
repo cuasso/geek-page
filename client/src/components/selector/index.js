@@ -22,7 +22,7 @@ export default Selector
 const OptionWrapper = styled.div`
     width: 50%;
     height: 100%;    
-    background-color:${props => props.active ? colors.red : `white`};
+    background-color:${props => props.active ? colors.red : colors.white};
 `
 
 const Option = styled.li`
@@ -36,12 +36,12 @@ const Option = styled.li`
     animation-timing-function: ease-out;
     
     ${props => props.active
-        ? `background-color:white;
+        ? `background-color:${colors.white};
            color: inherit;
            animation-name: ${props.selector}-active;`
 
         : `background-color:${colors.red};
-           color: white;
+           color: ${colors.white};
            animation-name: ${props.selector};`
     }
 

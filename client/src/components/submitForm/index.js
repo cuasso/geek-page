@@ -1,13 +1,19 @@
 import { useRef, useState } from "react"
 import styled from "styled-components"
+import to from 'await-catch';
 import { SubmitButton } from "../UI/button"
 import Input from "../UI/input"
 import { LoadingSpinner } from "../UI/spinner"
+import { WarningMessage } from "../UI/Messages";
 
 const SubmitForm = props => {
     const inputsRefs = useRef([])
+
     const [loading, setLoading] = useState(false)
-    const { button, inputs, submit } = props
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const { button, inputs, submit, onSuccess, onError } = props
 
     const inputsElements = (inputs.map((input, index) =>
         <Input ref={el => inputsRefs.current[index] = el}
@@ -20,19 +26,26 @@ const SubmitForm = props => {
     const onClickHandler = async (event) => {
         event.preventDefault();
         setLoading(true)
+        setError(false)
 
         let body = {}
         inputsRefs.current.forEach(input => body[input.name] = input.value)
-        const result = await submit(body)
-        console.log(result)
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000)
+        const [err] = await to(submit(body))
+        setLoading(false)
+
+        if (err) {
+            setError(true)
+            setErrorMessage(err)
+            onError()
+        }
+
+        onSuccess()
     }
 
     return (
         <FormContainer>
             {inputsElements}
+            {error && <WarningMessage>{errorMessage}</WarningMessage>}
             <SubmitButton onClick={onClickHandler} width='250px' height='50px'>
                 {loading ? (<LoadingSpinner />) : button}
             </SubmitButton>
