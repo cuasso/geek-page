@@ -8,12 +8,18 @@ export const instance = axios.create({
 instance.interceptors.response.use(
     (respose) => { return respose.data },
     (error) => {
-        let response = error.response.data
-        if (response.errors) {
-            const invalidParam = response.errors[0].param
-            response = `Invalid field ${invalidParam}.`
+        let errorMessage = ''
+        try {
+            let response = error.response.data
+            if (response.errors) {
+                const invalidParam = response.errors[0].param
+                errorMessage = `Invalid field ${invalidParam}.`
+            }
+        } catch (err) {
+            errorMessage = 'There was an unexpected error, try later.'
         }
 
-        return Promise.reject(response)
+        return Promise.reject(errorMessage)
+
     }
 )
