@@ -1,14 +1,14 @@
-import Login from "./components/login";
 import Header from "./layouts/header";
 import Footer from "./layouts/footer";
-
+import PageRoutes from "./routes";
+import { BrowserRouter } from 'react-router-dom'
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <Login />
+      < PageRoutes />
       <Footer />
-    </div>
+    </BrowserRouter>
   )
 }
 

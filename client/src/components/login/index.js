@@ -15,7 +15,7 @@ const Login = () => {
             { name: "Password", type: "password" }
         ],
         button: 'sing in',
-        submit: login 
+        submit: login
     }
 
     const signUpForm = {
@@ -40,11 +40,18 @@ const Login = () => {
                 defaultValue={defaultOption}
                 onChange={onChangeHandler} />
 
-            <SubmitForm
-                inputs={singIn ? singInForm.inputs : signUpForm.inputs}
-                button={singIn ? singInForm.button : signUpForm.button}
-                submit={singIn ? singInForm.submit : signUpForm.submit}
+            {singIn && <SubmitForm
+                inputs={singInForm.inputs}
+                button={singInForm.button}
+                submit={singInForm.submit}
             />
+            }
+            {!singIn && <SubmitForm
+                inputs={signUpForm.inputs}
+                button={signUpForm.button}
+                submit={signUpForm.submit}
+            />
+            }
         </LoginContainer>
     )
 }
