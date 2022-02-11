@@ -1,4 +1,4 @@
-import { instance } from "./instance";
+import { instance } from "./instances";
 
 export const login = async (data) => {
     const url = `api/users/login`

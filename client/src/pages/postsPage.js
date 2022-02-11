@@ -1,4 +1,8 @@
+import { useEffect, useState } from "react"
+import to from 'await-catch';
 import Post from "../components/post"
+import { getPosts } from '../services/postsService'
+import styled from "styled-components";
 
 const post =
 {
@@ -9,7 +13,30 @@ const post =
 
 
 const PostsPage = () => {
-    return <Post {...post} />
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const [err, { post }] = await to(getPosts())
+            setPosts(post)
+        }
+
+        fetchPosts()
+    }, [])
+
+    console.log(posts)
+
+    return (
+        <PostsContainer>
+            {posts.map((post, index) => <Post {...post} key={index + post.title} />)}
+        </PostsContainer>
+    )
 }
+
+const PostsContainer = styled.div`
+    & > * {
+        margin: 2rem  auto; 
+    }
+`
 
 export default PostsPage

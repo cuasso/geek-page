@@ -7,8 +7,6 @@ const WithAuth = ({ children }) => {
     const userCtx = useContext(UserContext)
     const location = useLocation()
 
-    console.log(userCtx)
-
     if (!userCtx.token) {
         return <Navigate to="/authenticate" state={{ from: location }} replace />
     }
