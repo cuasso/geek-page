@@ -1,6 +1,7 @@
 import {
     Routes,
-    Route
+    Route,
+    Navigate
 } from "react-router-dom"
 
 import WithAuth from '../components/WithAuth'
@@ -11,8 +12,8 @@ const PageRoutes = () => {
     return (
         <Routes>
             <Route path='/authenticate' element={<LoginPage />} />
-            <Route path='/' element={<WithAuth><PostsPage /></WithAuth>}
-            />
+            <Route path='/posts' element={<WithAuth><PostsPage /></WithAuth>} />
+            <Route path='*' element={<Navigate to="/posts" />} />
         </Routes>
     )
 }

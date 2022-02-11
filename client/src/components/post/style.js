@@ -8,6 +8,7 @@ export const PostContainer = styled.div`
     flex-direction: column;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 1rem 0px;
     
     @media (max-width: 800px) {
         width: 80%
@@ -17,4 +18,5 @@ export const Img = styled.img`
     height: 100%;
     width: 100%;
     object-fit: contain;
+    padding: 1rem 0px;
 `
