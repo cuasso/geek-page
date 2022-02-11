@@ -1,13 +1,18 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { LoginContainer } from "./style"
 import Selector from "../selector"
 import SubmitForm from '../submitForm'
 import { login } from "../../services/usersService"
+import UserContext from "../../stores/user/user-context"
+import { useLocation, useNavigate } from "react-router-dom"
 
 
 const Login = () => {
     const [singIn, setSingIn] = useState(true)
-    const [defaultOption, setdefaultOption] = useState(1)
+    const [defaultOption, setDefaultOption] = useState(1)
+    const userCtx = useContext(UserContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const singInForm = {
         inputs: [
@@ -15,7 +20,12 @@ const Login = () => {
             { name: "Password", type: "password" }
         ],
         button: 'sing in',
-        submit: login
+        submit: login,
+        onSuccess: (data) => {
+            userCtx.login(data.token, data.user)
+            const from = location.state?.from.pathname || '/'
+            navigate(from, { replace: true })
+        }
     }
 
     const signUpForm = {
@@ -30,7 +40,7 @@ const Login = () => {
 
     const onChangeHandler = (value) => {
         setSingIn(value === 1)
-        setdefaultOption(value)
+        setDefaultOption(value)
     }
 
     return (
@@ -44,6 +54,7 @@ const Login = () => {
                 inputs={singInForm.inputs}
                 button={singInForm.button}
                 submit={singInForm.submit}
+                onSuccess={singInForm.onSuccess}
             />
             }
             {!singIn && <SubmitForm

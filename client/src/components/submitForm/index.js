@@ -30,7 +30,7 @@ const SubmitForm = props => {
 
         let body = {}
         inputsRefs.current.forEach(input => body[input.name] = input.value)
-        const [err] = await to(submit(body))
+        const [err, data] = await to(submit(body))
         setLoading(false)
 
         if (err) {
@@ -39,7 +39,7 @@ const SubmitForm = props => {
             onError()
         }
 
-        onSuccess()
+        onSuccess(data)
     }
 
     return (

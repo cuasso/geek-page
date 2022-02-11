@@ -16,17 +16,17 @@ export class Server {
         this.connectToDb()
     }
 
-    addRoutes() {
-        this.app.use('/api/users', usersRoutes)
-        this.app.use('/api/posts', postsRoutes)
-        this.app.get('/', (req, res) => res.status(200).send('welcome to geek-post'))
-    }
-
     configure() {
         this.app.use(cors())
         this.app.use(express.json())
     }
 
+    addRoutes() {
+        this.app.use('/api/users', usersRoutes)
+        this.app.use('/api/posts', postsRoutes)
+        this.app.get('/', (req, res) => res.status(200).send('welcome to geek-post'))
+    }
+    
     async connectToDb() { await connect() }
 
     start() {
